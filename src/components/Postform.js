@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createPost } from '../actions/postActions';
 
 class Postform extends Component {
 
@@ -58,8 +57,4 @@ const mapStateToProps = state => ({
   post: state.posts.item
 });
 
-const mapDispatchToProps = {
-  createPost
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Postform);
+export default connect(mapStateToProps, null)(Postform);

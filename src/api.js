@@ -1,18 +1,16 @@
-import { FETCH_POST, NEW_POST } from './types';
-
 function fetchPosts() {
-  return (dispatch) => {
+  return new Promise((resolve, reject) => {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then(res => res.json())
-      .then(posts => dispatch({
-        type: FETCH_POST,
-        payload: posts
-      }));
-  }
+      .then(posts => {
+        resolve(posts);
+      })
+      .catch(reject)
+  });
 }
 
 function createPost(post) {
-  return (dispatch) => {
+  return new Promise((resolve, reject) => {
     fetch('https://jsonplaceholder.typicode.com/posts', {
       method: 'POST',
       headers: {
@@ -21,11 +19,14 @@ function createPost(post) {
       body: JSON.stringify(post)
     })
       .then(res => res.json())
-      .then(data => dispatch({
-        type: NEW_POST,
-        payload: data
-      }));
-  }
+      .then(data => {
+        resolve(data);
+      })
+      .catch(reject);
+  });
 }
 
-export { fetchPosts, createPost };
+export default {
+  fetchPosts,
+  createPost
+}

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions/postActions';
 
 class Posts extends Component {
 
   componentWillMount() {
-    this.props.fetchPosts();
+    console.log(this.props);
   }
 
   render() {
@@ -29,6 +28,6 @@ const mapStateToProps = state => ({
   posts: state.posts.items
 });
 
-const mapDispatchToProps = { fetchPosts };
+// const mapDispatchToProps = { fetchPosts };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(mapStateToProps, {})(Posts);
