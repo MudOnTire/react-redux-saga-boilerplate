@@ -6,6 +6,7 @@ const initialState = {
 }
 
 export default function (state = initialState, action) {
+  console.log(action);
   switch (action.type) {
     case FETCH_POST_SUCCEED:
       return {
@@ -16,7 +17,7 @@ export default function (state = initialState, action) {
     case CREATE_POST_SUCCEED:
       return {
         ...state,
-        item: action.payload
+        items: [action.payload, ...state.items]
       }
       break;
     default:
